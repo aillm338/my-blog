@@ -5,10 +5,9 @@ import { getCollection } from "astro:content";
 const posts = await getCollection("blog");
 const categories = [...new Set(posts.map((p) => p.data.category))];
 
-const categoryInfo: Record<string, { icon: string; desc: string }> = {
-  "技术": { icon: "💻", desc: "技术笔记、编程心得与工具分享" },
-  "生活": { icon: "🌿", desc: "日常随笔、思考与生活记录" },
-  "项目": { icon: "🚀", desc: "项目展示与开发经验总结" },
+const categoryInfo: Record<string, { desc: string }> = {
+  "记录我的学习生活": { desc: "技术笔记、编程心得与工具分享" },
+  "生活随笔": { desc: "日常随笔、思考与生活记录" },
 };
 
 const totalPosts = posts.length;
@@ -28,24 +27,34 @@ const totalPosts = posts.length;
   <!-- Category Cards -->
   <section class="mb-14 animate-fade-in" style="animation-delay: 0.1s">
     <h2 class="text-sm font-medium text-zinc-600 uppercase tracking-wider mb-4">分类浏览</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <div class="space-y-4">
       {
         categories.map((cat) => {
           const count = posts.filter((p) => p.data.category === cat).length;
-          const info = categoryInfo[cat] || { icon: "📂", desc: "" };
+          const info = categoryInfo[cat] || { desc: "" };
           return (
             <a
               href={`${import.meta.env.BASE_URL}category/${cat}/`}
-              class="glass card-hover rounded-2xl p-6 group text-left"
+              class="glass card-hover rounded-2xl p-6 block group"
             >
-              <div class="text-3xl mb-4">{info.icon}</div>
-              <h3 class="text-lg font-semibold text-zinc-100 group-hover:text-purple-300 transition-colors mb-1">
-                {cat}
-              </h3>
-              <p class="text-xs text-zinc-600 mb-3">{count} 篇文章</p>
-              <p class="text-sm text-zinc-500 leading-relaxed">{info.desc}</p>
-              <div class="mt-4 text-xs text-purple-400/60 group-hover:text-purple-400 transition-colors">
-                浏览全部 &rarr;
+              <div class="flex items-start justify-between gap-4">
+                <div class="min-w-0">
+                  <h3 class="text-xl font-semibold text-zinc-100 group-hover:text-purple-300 transition-colors mb-2">
+                    {cat}
+                  </h3>
+                  <p class="text-sm text-zinc-500 leading-relaxed">
+                    {info.desc}
+                  </p>
+                </div>
+                <div class="text-right shrink-0">
+                  <p class="text-2xl font-bold gradient-text">{count}</p>
+                  <p class="text-xs text-zinc-600 mt-1">篇文章</p>
+                </div>
+              </div>
+              <div class="mt-4 flex items-center gap-2">
+                <span class="text-xs text-zinc-600 group-hover:text-purple-400 transition-colors">
+                  浏览全部 &rarr;
+                </span>
               </div>
             </a>
           );
