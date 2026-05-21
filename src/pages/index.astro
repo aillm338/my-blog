@@ -1,0 +1,41 @@
+---
+import Base from "../layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<Base>
+  <h1 class="text-3xl font-bold tracking-tight mb-8">文章</h1>
+  <ul class="space-y-8">
+    {
+      posts.map((post) => (
+        <li>
+          <a
+            href={`/blog/${post.id}/`}
+            class="group block"
+          >
+            <h2 class="text-xl font-semibold group-hover:text-blue-600 transition-colors">
+              {post.data.title}
+            </h2>
+            <time class="text-sm text-gray-500 mt-1 block" datetime={post.data.date.toISOString()}>
+              {post.data.date.toLocaleDateString("zh-CN", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </time>
+            {
+              post.data.description && (
+                <p class="text-gray-600 mt-2 leading-relaxed">
+                  {post.data.description}
+                </p>
+              )
+            }
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Base>

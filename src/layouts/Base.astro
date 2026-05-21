@@ -1,0 +1,22 @@
+---
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Blog</title>
+  </head>
+  <body class="bg-white text-gray-900 antialiased">
+    <header class="border-b border-gray-200">
+      <nav class="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" class="text-xl font-bold tracking-tight">My Blog</a>
+      </nav>
+    </header>
+    <main class="max-w-2xl mx-auto px-6 py-12">
+      <slot />
+    </main>
+  </body>
+</html>
