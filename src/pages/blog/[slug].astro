@@ -15,17 +15,32 @@ const { Content } = await post.render();
 ---
 
 <Base>
-  <a href="/" class="text-sm text-blue-600 hover:underline mb-6 inline-block">&larr; 返回首页</a>
-  <article>
-    <h1 class="text-3xl font-bold tracking-tight mb-2">{post.data.title}</h1>
-    <time class="text-sm text-gray-500 mb-8 block" datetime={post.data.date.toISOString()}>
-      {post.data.date.toLocaleDateString("zh-CN", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })}
-    </time>
-    <div class="prose prose-gray max-w-none">
+  <a
+    href="/"
+    class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-200 transition-colors mb-10 group"
+  >
+    <span class="group-hover:-translate-x-1 transition-transform">&larr;</span>
+    返回首页
+  </a>
+
+  <article class="animate-fade-in">
+    <header class="mb-12">
+      <h1 class="text-3xl font-bold tracking-tight mb-4">
+        <span class="gradient-text">{post.data.title}</span>
+      </h1>
+      <time
+        class="text-sm text-zinc-600 font-mono"
+        datetime={post.data.date.toISOString()}
+      >
+        {post.data.date.toLocaleDateString("zh-CN", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}
+      </time>
+    </header>
+
+    <div class="prose-custom">
       <Content />
     </div>
   </article>

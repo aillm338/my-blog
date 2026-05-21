@@ -3,20 +3,39 @@ import "../styles/global.css";
 ---
 
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   </head>
-  <body class="bg-white text-gray-900 antialiased">
-    <header class="border-b border-gray-200">
-      <nav class="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" class="text-xl font-bold tracking-tight">My Blog</a>
-      </nav>
+  <body class="bg-bg text-zinc-200 antialiased min-h-screen">
+    <!-- Header -->
+    <header class="relative z-20 border-b border-border">
+      <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" class="text-lg font-semibold tracking-tight hover:opacity-80 transition-opacity">
+          <span class="gradient-text">My Blog</span>
+        </a>
+        <nav class="flex items-center gap-6 text-sm text-zinc-500">
+          <a href="/" class="hover:text-zinc-200 transition-colors">文章</a>
+          <a href="/about" class="hover:text-zinc-200 transition-colors">关于</a>
+        </nav>
+      </div>
     </header>
-    <main class="max-w-2xl mx-auto px-6 py-12">
+
+    <!-- Main -->
+    <main class="relative z-10 max-w-3xl mx-auto px-6 py-16">
       <slot />
     </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 border-t border-border">
+      <div class="max-w-3xl mx-auto px-6 py-8 text-center text-sm text-zinc-600">
+        <p>&copy; {new Date().getFullYear()} My Blog. Built with Astro.</p>
+      </div>
+    </footer>
   </body>
 </html>
