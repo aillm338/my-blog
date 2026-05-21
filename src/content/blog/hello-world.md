@@ -2,6 +2,7 @@
 title: Hello World — 记录我的学习日常
 date: 2026-05-21
 description: 欢迎来到我的个人博客
+category: 技术
 ---
 ## 欢迎光临
 

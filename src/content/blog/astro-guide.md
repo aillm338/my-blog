@@ -2,6 +2,7 @@
 title: 关于我：生活随笔
 date: 2026-05-20
 description: 我将在这里记录我生活中有趣的事情和我的感想
+category: 生活
 ---
 
 ## 为什么选择 Astro

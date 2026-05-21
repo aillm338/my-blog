@@ -5,6 +5,7 @@ const blog = defineCollection({
     title: z.string(),
     date: z.date(),
     description: z.string().optional(),
+    category: z.string().default("未分类"),
   }),
 });
 
