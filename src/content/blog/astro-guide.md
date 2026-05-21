@@ -1,7 +1,7 @@
 ---
-title: Astro 博客搭建指南
+title: 关于我   生活随笔
 date: 2026-05-20
-description: 用 Astro 和 Tailwind CSS 快速搭建一个轻量博客的完整流程。
+description: 我将在这里记录我生活中有趣的事情和我的感想
 ---
 
 ## 为什么选择 Astro
